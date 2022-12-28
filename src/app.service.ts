@@ -1,8 +1,29 @@
-import { Injectable } from '@nestjs/common';
+import {
+    Injectable,
+    InternalServerErrorException,
+    NotFoundException,
+} from '@nestjs/common';
+import Metadata from './metadata';
+import { dynamoDB } from './dynamodb';
 
 @Injectable()
 export class AppService {
-    getHello(): string {
-        return 'Hello World!';
+    async getMetadata(id: string): Promise<Metadata | null> {
+        try {
+            const results = await dynamoDB
+                .get({
+                    TableName: 'Metadata',
+                    Key: { id },
+                })
+                .promise();
+
+            if (!results.Item) {
+                return null;
+            }
+
+            return results.Item as Metadata;
+        } catch (e) {
+            throw new InternalServerErrorException(e);
+        }
     }
 }
