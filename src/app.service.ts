@@ -1,8 +1,4 @@
-import {
-    Injectable,
-    InternalServerErrorException,
-    NotFoundException,
-} from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import Metadata from './metadata';
 import { dynamoDB } from './dynamodb';
 
@@ -12,7 +8,7 @@ export class AppService {
         try {
             const results = await dynamoDB
                 .get({
-                    TableName: 'Metadata',
+                    TableName: 'KawaiiMetadata',
                     Key: { id },
                 })
                 .promise();

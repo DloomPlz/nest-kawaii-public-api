@@ -1,4 +1,4 @@
-service: nest-serverless
+service: kawaii-api
 plugins:
   - serverless-plugin-optimize
   - serverless-offline
@@ -34,14 +34,14 @@ provider:
             - 'dynamodb:UpdateItem'
             - 'dynamodb:DeleteItem'
 
-          Resource: arn:aws:dynamodb:us-west-2:*:table/KawaiiMetadata
+          Resource: arn:aws:dynamodb:us-east-1:664268382134:table/KawaiiMetadata
 
 custom:
   esbuild:
     bundle: true
     minify: false
     sourcemap: true
-    exclude: aws-sdk
+    exclude: [aws-sdk]
     target: node14
     define: 'require.resolve: undefined'
     platform: node
@@ -57,7 +57,7 @@ custom:
 
 resources:
   Resources:
-    TodosTable:
+    KawaiiMetadata:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: KawaiiMetadata
