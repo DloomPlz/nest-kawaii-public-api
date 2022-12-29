@@ -38,4 +38,5 @@ lerna-debug.log*
 .dynamodb
 
 # Serverless
+.serverless
 _optimize
