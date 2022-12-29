@@ -22,7 +22,7 @@ jobs:
       - name: Install Plugin and Deploy
         uses: serverless/github-action@v3.1
         with:
-          args: -c "serverless plugin install --name serverless-plugin-optimize && serverless plugin install --name serverless-offline && serverless plugin install --name serverless-dynamodb-local && serverless deploy"
+          args: -c "serverless plugin install --name serverless-plugin-optimize && serverless plugin install --name serverless-offline && serverless plugin install --name serverless-dynamodb-local && serverless deploy --stage production"
           entrypoint: /bin/sh
         env:
            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
