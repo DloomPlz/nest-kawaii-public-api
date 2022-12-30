@@ -34,7 +34,7 @@ provider:
             - 'dynamodb:UpdateItem'
             - 'dynamodb:DeleteItem'
 
-          Resource: arn:aws:dynamodb:us-east-1:664268382134:table/KawaiiMetadata
+          Resource: arn:aws:dynamodb:us-east-1:457802880228:table/KawaiiMetadata
 
 custom:
   esbuild:
